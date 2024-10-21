@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with PlayerRank.">
+    <meta name="keywords" content="Contact Us, PlayerRank, Free Fire">
+    <title>Contact Us - PlayerVault</title>
+    <script src="https://kit.fontawesome.com/bd6d6d28c5.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: "Staatliches", sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 80px 0 0; /* Ensure enough padding for fixed navbar */
+            overflow-x: hidden;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        nav {
+            background: #151515; 
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center; /* Center items vertically */
+            justify-content: space-between; /* Space between logo and sidebar button */
+        }
+
+        .main-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 20px;
+            background-color: #151515;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        h1, h2 {
+            color: #e6e600;
+
+        }
+
+        .h2contact {
+
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #e6e600;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 2px solid #444;
+            border-radius: 5px;
+            background-color: #222;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #e6e600;
+            color: #000;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button:hover {
+            background-color: #fff200;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        label.logo {
+            color: #e6e600; /* Bright accent color for logo */
+            font-size: 25px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+        nav ul {
+            display: flex; /* Use flexbox for nav links */
+            align-items: center; /* Center links vertically */
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            margin: 0 10px; /* Adjust margin for spacing */
+        }
+
+        nav ul li a {
+            color: #e6e600; 
+            font-size: 17px;
+            padding: 7px 13px; /* Adjust padding to reduce space */
+            border-radius: 3px;
+            text-transform: uppercase;
+            line-height: 1; /* Set to 1 for minimal line height */
+        }
+
+        a.active,
+        a:hover {
+            transition: .5s;
+            color: white;
+        }
+
+        .checkbtn {
+            font-size: 22px;
+            color: white;
+            margin-right: 30px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 1050px) {
+            label.logo {
+                padding-left: 30px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+                line-height: 1; /* Set line height for media query */
+            }
+        }
+
+        @media (max-width: 890px) {
+            .checkbtn {
+                display: block;
+            }
+
+            label.logo {
+                font-size: 22px;
+            }
+
+            nav ul {
+                position: fixed;
+                width: 70%;
+                height: 100vh;
+                background: #0f0f0f;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+                z-index: 1000;
+                flex-direction: column; /* Stack items vertically */
+            }
+
+            nav ul li {
+                margin: 20px 0;
+            }
+
+            nav ul li a {
+                font-size: 20px;
+                line-height: 1; /* Set line height for media query */
+                padding: 5px 10px; /* Adjust padding to reduce space */
+            }
+        }
+
+        a.active {
+            background: #008ae6;
+        }
+
+        #check:checked ~ ul {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <label class="logo">PlayerVault</label>
+    <input type="checkbox" id="check" class="checkbtn">
+    <label for="check" class="checkbtn">
+        <i class="fas fa-bars"></i>
+    </label>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="article.html">Articles</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a class="active" href="https://forms.gle/CF1ujezdSZ4Cp4xGA">Create Player card</a></li>
+    </ul>
+</nav>
+
+<div class="main-container">
+    <h1>Contact Us</h1>
+    <p>If you have any questions, feel free to reach out to us using the form below or through our contact information provided.</p>
+    
+    <h2>Get in Touch</h2>
+    <form class="contact-form" id="contact-form"  method="POST" name="google-sheet">
+        
+        
+        <div class="form-group">
+            <label for="name">Name</label>  
+            <input type="text" id="name" name="name" required placeholder="Your Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Your Email">
+        </div>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Your Message"></textarea>
+        </div>
+        <button type="submit" name="submit">Send Message</button>
+    </form>
+</div>
+
+
+    <h2 class="h2contact">Contact Information</h2>
+    <div class="contact-info">
+        <p>Email: <a href="mailto:infoplayervault@gmail.com" style="color: #e6e600;">infoplayervault@gmail.com</a></p>
+        <p>Follow us on social media</p>
+        <p>
+            <a href="https://www.facebook.com/playervault" style="color: #e6e600; margin-right: 10px;"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="https://t.me/playervault" style="color: #e6e600; margin-right: 10px;"><i class="fa-brands fa-telegram"></i></i> Telegram</a>
+            <a href="https://www.instagram.com/playervault.in/profilecard/?igsh=MWlpNjJsemxoZGJzNA==" style="color: #e6e600; margin-right: 10px;"><i class="fab fa-instagram"></i> Instagram</a>
+            <a href="https://youtube.com/@playervaultgaming?si=VR0cra0HiN8m7q9l" style="color: #e6e600;"><i class="fab fa-youtube"></i> YouTube</a>
+        </p>
+    </div>
+</div>
+
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyuzWovxhom7hpX4yecb_sgUmB2DR1ogUATDucHy6l5PeAuuKNI1wQZDNWQkvuOrMrjLA/exec';
+    const form = document.forms['google-sheet'];
+    const button = form.querySelector('button[type="submit"]');
+    const loadingMessage = document.createElement('div');
+    
+    loadingMessage.style.display = 'none';
+    loadingMessage.style.textAlign = 'center';
+    loadingMessage.style.color = '#e6e600';
+    loadingMessage.textContent = 'Processing... Please wait.';
+    form.appendChild(loadingMessage);
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();  // Prevent default form submission
+        loadingMessage.style.display = 'block';  // Show loading message
+        button.disabled = true;  // Disable the button to prevent multiple submissions
+
+        fetch(scriptURL, { 
+            method: 'POST',
+            body: new FormData(form) 
+        })
+        .then(response => {
+            // If form submission is successful
+            alert('Thanks for contacting us! We will get in touch soon.');
+            form.reset();  // Reset form after submission
+            loadingMessage.style.display = 'none';  // Hide loading message
+            button.disabled = false;  // Re-enable the button
+        })
+        .catch(error => {
+            // If there is an error
+            console.error('Error!', error.message);
+            alert('Oops! Something went wrong. Please try again.');
+            loadingMessage.style.display = 'none';  // Hide loading message
+            button.disabled = false;  // Re-enable the button
+        });
+    });
+</script>
+
+</body>
+</html>
