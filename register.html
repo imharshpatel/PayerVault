@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ranking of Free Fire players based on UID and performance.">
+    <meta name="keywords" content="Free Fire, player ranking, gaming, UID">
+    <title>PlayerVault</title>
+    <script src="https://kit.fontawesome.com/bd6d6d28c5.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Staatliches", sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        nav {
+            background: #151515; /* Match the body background */
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        label.logo {
+            color: #e6e600; /* Bright accent color for logo */
+            font-size: 25px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: #e6e600; /* Bright accent color for links */
+            font-size: 17px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        a.active,
+        a:hover {
+            transition: .8s;
+            color: white;
+        }
+
+        .checkbtn {
+            font-size: 22px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 30px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 1050px) {
+            label.logo {
+                padding-left: 30px;
+            }
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 890px) {
+            .checkbtn {
+                display: block;
+            }
+            label.logo {
+                font-size: 22px;
+            }
+            ul {
+                position: fixed;
+                width: 70%;
+                height: 100vh;
+                background: #0f0f0f;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+                z-index: 1000;
+            }
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 5px;
+            }
+            nav ul li a {
+                font-size: 20px;
+            }
+        }
+
+        a.active {
+            background: #008ae6;
+        }
+
+        #check:checked ~ ul {
+            left: 0;
+        }
+
+        main {
+            padding: 100px 20px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            background: rgba(50, 50, 50, 0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #ffeb3b;
+            border-bottom: 2px solid #ffeb3b;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            color: #ffeb3b;
+            border-bottom: 2px solid #ffeb3b;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tournament-entry, .tournament-entry-squad {
+            background: rgba(60, 60, 60, 0.9);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tournament-entry:hover, .tournament-entry-squad:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(255, 235, 59, 0.7);
+        }
+
+        .tournament-entry h3, .tournament-entry-squad h3 {
+            margin: 0;
+            color: #ffeb3b;
+        }
+
+        button{
+            background-color: #ffeb3b;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.2s;
+            width: 100%;
+            font-family: sans-serif
+        }
+
+        button:hover {
+            background-color: #ffd600;
+        }
+
+        .squad-title {
+            padding-bottom: 20px;
+        }
+
+        .squad-title h1 {
+            text-align: center;
+            color: #ffeb3b;
+            font-family: sans-serif;
+            border: 1px solid #ffeb3b;
+            border-radius: 7px;
+            padding: 10px;
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            font-size: 25px; /* Size of the icons */
+            color: #ffeb3b; /* Icon color */
+            transition: transform 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: #333;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-shadow: 0 2px 4px #000000;
+        }
+
+        @media (max-width: 890px) {
+    ul {
+        position: fixed;
+        width: 70%;
+        height: 100vh;
+        background: #0f0f0f;
+        top: 80px;
+        left: -100%; /* Check if this hides content */
+        text-align: center;
+        transition: all .5s;
+        z-index: 1000;
+    }
+}
+
+.button-s {
+            background-color: #bebebe;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            
+            width: 100%;
+            font-family: sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn"><i class="fas fa-bars"></i></label>
+            <label class="logo">PlayerVault</label>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="support.html">Support</a></li>
+              <li><a href="terms.html">Terms</a></li>
+                <li><a class="active" href="register.html">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section" id="about">
+            <h2>Welcome to the Free Fire Tournament!</h2>
+            <p>Join our epic Free Fire tournaments and showcase your skills against top players.</p>
+        </section>
+
+ 
+
+        <section class="section" id="steps">
+            <h2>Tournament Rules</h2>
+            <ol>
+                <li>Players must be level 50 or higher to compete.</li>
+                <li>Participants must fill correct details while registering for form.</li>
+                <li>All players must join the match using the provided room ID and password.</li>
+                <li>Cheating or unauthorized software will result in disqualification and a permanent ban from future tournaments.</li>
+                <li>Players must respect each other and maintain good sportsmanship.</li>
+                <li>False payment proof will be rejected.</li>
+                <li>Decisions made by the tournament organizers are final.</li>
+            </ol>
+        </section>
+
+        <section class="section" id="notice">
+            <h2>Notice</h2>
+            <ol>
+                <li>Entry charges of all players will be refunded if any hacker is found in the game, or players will get a chance to play the next two tournaments for free.</li>
+                <li style="margin-top: 10px;">Visit the Support page for any concerns related to the tournament.</li>
+                <li style="margin-top: 10px;">Articles will be written on winners.</li>
+            </ol>
+        </section>
+
+        <div class="tournament-entry">
+            <h3>Solo Tournament #1</h3>
+            <p style="margin-bottom: 10px;"><strong>Entry Fee:</strong> ₹5</p>
+            <div style="background-color: #414141; border-radius: 10px; padding: 10px; margin-bottom: 20px;">
+                <p>💸 Prizes:</p>
+                <p>🏆 Winner: ₹150 <br>🏆 Runner-Up: ₹50 </p>
+            </div>
+            <button onclick="alert('Redirect to registration form!')"><b>Register Now</b></button>
+        </div>
+
+        <div class="tournament-entry">
+            <h3>Solo Tournament #2</h3>
+            <p style="margin-bottom: 10px;"><strong>Entry Fee:</strong> ₹10</p>
+            <div style="background-color: #414141; border-radius: 10px; padding: 10px; margin-bottom: 20px;">
+                <p>💸 Prizes:</p>
+                <p>🏆 Winner: ₹300 <br>🏆 Runner-Up: ₹80 </p>
+            </div>
+            <button onclick="alert('Redirect to registration form!')"><b>Register Now</b></button>
+        </div>
+
+        <div class="squad-title">
+            <h1>Squad Tournament</h1>
+        </div>
+
+        <div class="tournament-entry-squad">
+            <h3>Squad Tournament</h3>
+            <p style="margin-bottom: 10px;"><strong>Entry Fee:</strong> ₹19</p>
+            <div style="background-color: #414141; border-radius: 10px; padding: 10px; margin-bottom: 20px;">
+                <p>💸 Prizes:</p>
+                <p>🏆 Winner: ₹250 <br>🏆 Runner-Up: ₹100 </p>
+            </div>
+            <button class="button-s"><b>Coming Soon</b></button>
+        </div>
+
+        <section class="section" id="follow">
+            <h4>Follow Us For Upcoming Tournament & Giveaway Updates</h4>
+            <div class="social-media">
+                <a href="https://www.instagram.com/yourprofile" target="_blank" aria-label="Follow us on Instagram">
+                    <i class="fab fa-instagram social-icon"></i>
+                </a>
+                <a href="https://t.me/yourchannel" target="_blank" aria-label="Follow us on Telegram">
+                    <i class="fab fa-telegram-plane social-icon"></i>
+                </a>
+                <a href="https://www.youtube.com/c/yourchannel" target="_blank" aria-label="Follow us on YouTube">
+                    <i class="fab fa-youtube social-icon"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contact us: <a href="mailto: infoplayervault@gmail.com"> infoplayervault@gmail.com</a></p>
+    </footer>
+
+    
+</body>
+</html>
