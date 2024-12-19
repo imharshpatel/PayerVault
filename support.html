@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ranking of Free Fire players based on UID and performance.">
+    <meta name="keywords" content="Free Fire, player ranking, gaming, UID">
+    <title>PlayerVault</title>
+    <script src="https://kit.fontawesome.com/bd6d6d28c5.js" crossorigin="anonymous"></script>
+    <style>
+        nav {
+            background: #151515; /* Match the body background */
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top:0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        label.logo {
+            color: #e6e600; /* Bright accent color for logo */
+            font-size: 25px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: #e6e600; /* Bright accent color for links */
+            font-size: 17px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        a.active,
+        a:hover {
+            transition: .8s;
+            color: white;
+        }
+
+        .checkbtn {
+            font-size: 22px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 30px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 1050px) {
+            label.logo {
+                padding-left: 30px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 890px) {
+            .checkbtn {
+                display: block;
+            }
+
+            label.logo {
+                font-size: 22px;
+            }
+
+            ul {
+                position: fixed;
+                width: 70%;
+                height: 100vh;
+                background: #0f0f0f;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+                z-index: 1000;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 5px;
+            }
+
+            nav ul li a {
+                font-size: 20px;
+            }
+        }
+
+        a.active {
+            background: #008ae6;
+        }
+
+        #check:checked ~ ul {
+            left: 0;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        body {
+            font-family: "Staatliches", sans-serif;
+            background-color: #0d0d0d;
+            color: #fff;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+       
+
+        .social-links {
+            margin-top: 10px;
+        }
+
+        .social-links a {
+            margin: 0 10px;
+            color: #e6e600;
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+        .yticon i{
+            color: #e6e600;
+        }
+
+        .yticon i:hover{
+            color: white;
+           
+        }
+        main {
+            padding: 100px 20px 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            background: rgba(50, 50, 50, 0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #ffeb3b;
+            border-bottom: 2px solid #ffeb3b;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq {
+            margin: 20px 0;
+        }
+
+        .faq h3 {
+            cursor: pointer;
+            margin: 10px 0;
+        }
+
+        .faq-content {
+            display: none;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #414141;
+            border-radius: 5px;
+        }
+
+        .feedback-form {
+            margin-top: 20px;
+            background: rgba(50, 50, 50, 0.9);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .feedback-form input, 
+        .feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: #fff;
+        }
+
+        .feedback-form button {
+            background: #ffeb3b;
+            color: #000;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .feedback-form button:hover {
+            background: #ffd600;
+        }
+
+        .success-message {
+            display: none;
+            background: rgba(0, 128, 0, 0.8);
+            color: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-shadow: 0 2px 4px #000000;
+        }
+
+        #prize-details {
+    background: rgba(50, 50, 50, 0.9);
+    padding: 30px 20px;
+    border-radius: 8px;
+    margin: 40px auto;
+    max-width: 800px;
+    color: #ffeb3b;
+}
+
+#prize-details h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#prize-details h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #ffeb3b;
+}
+
+#prize-details p, #prize-details ul {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+#prize-details ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#prize-details hr {
+    border: 1px solid #ffeb3b;
+    margin: 20px 0;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+    <nav>
+        <!-- Checkbox for toggling menu -->
+        <input type="checkbox" id="check">
+    
+        <!-- Menu icon -->
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+    
+        <!-- Site logo -->
+        <label class="logo">PlayerVault</label>
+    
+        <!-- Navigation links -->
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="terms.html">Terms</a></li>
+            <li><a class="active" href="register.html">Register</a></li>
+          
+        </ul>
+        
+    </nav>
+    </header>
+
+    <main>
+        <section class="section" id="faqs">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq">
+                <h3 onclick="toggleFAQ(this)">1. How do I register for a tournament?</h3>
+                <div class="faq-content">
+                    <p>You can register by clicking the "Register Now" button on the tournament details page.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <h3 onclick="toggleFAQ(this)">2. What should I do if I encounter technical issues?</h3>
+                <div class="faq-content">
+                    <p>Please contact our support team via email at <a href="mailto:support@freefiretournaments.com">support@freefiretournaments.com</a>.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <h3 onclick="toggleFAQ(this)">3. How are the winners determined?</h3>
+                <div class="faq-content">
+                    <p>Winners are determined based on in-game performance as per the tournament rules.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <h3 onclick="toggleFAQ(this)">4. What if a hacker is found in the game?</h3>
+                <div class="faq-content">
+                    <p>If a hacker is found in the game, your entry fee will be refunded, or you will get a chance to play the next two rounds of tournaments for free.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <h3 onclick="toggleFAQ(this)">5. Can I change my team after registration?</h3>
+                <div class="faq-content">
+                    <p>Changes to teams can be made until the registration deadline. Please contact support for assistance.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <h3 onclick="toggleFAQ(this)">6. What are the entry fees for tournaments?</h3>
+                <div class="faq-content">
+                    <p>Entry fees vary by tournament. Please check the tournament details for specific fees.</p>
+                </div>
+            </div>
+            <div class="faq">
+                <h3 onclick="toggleFAQ(this)">7. How will I receive my tournament schedule?</h3>
+                <div class="faq-content">
+                    <p>Your tournament schedule will be emailed to you after registration is complete.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <h2>Contact Us</h2>
+            <p>If you have any additional questions or need further assistance, please reach out:</p>
+            <p>Email: <a href="mailto: infoplayervault@gmail.com"> infoplayervault@gmail.com</a></p>
+            <p>Phone: +1 234 567 8900</p>
+        </section>
+
+        <section class="feedback-form">
+            <h2>Feedback</h2>
+            <form id="feedbackForm" onsubmit="submitFeedback(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="4" placeholder="Your Feedback" required></textarea>
+                <button type="submit">Submit Feedback</button>
+            </form>
+            <div class="success-message"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contact us: <a href="mailto: infoplayervault@gmail.com"> infoplayervault@gmail.com</a></p>
+    </footer>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+
+        // Close sidebar on outside click
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggleButton = document.querySelector('.sidebar-toggle');
+
+            // Check if the click was outside the sidebar and the toggle button
+            if (!sidebar.contains(event.target) && !toggleButton.contains(event.target)) {
+                sidebar.classList.remove('show'); // Close the sidebar
+            }
+        });
+      
+
+        function toggleFAQ(element) {
+            const content = element.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function submitFeedback(event) {
+            event.preventDefault();
+            document.querySelector(".success-message").textContent = "Thank you for your valuable feedback!";
+            document.querySelector(".success-message").style.display = "block";
+            document.getElementById("feedbackForm").reset();
+            setTimeout(() => {
+                document.querySelector(".success-message").style.display = "none";
+            }, 3000);
+        }
+        
+    </script>
+
+    </body>
+    </html>
