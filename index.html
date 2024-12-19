@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ranking of Free Fire players based on UID and performance.">
-    <meta name="keywords" content="Free Fire, player ranking, gaming, UID">
-    <title>PlayerVault</title>
+    <meta name="description" content="Home page for Free Fire Tournament.">
+    <meta name="keywords" content="Free Fire, tournament, gaming">
+    <title>Home - PlayerVault</title>
     <script src="https://kit.fontawesome.com/bd6d6d28c5.js" crossorigin="anonymous"></script>
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Staatliches", sans-serif;
+            background: linear-gradient(to bottom right, #0d0d0d, #1c1c1c);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
         nav {
-            background: #151515; /* Match the body background */
+            background: #151515;
             height: 80px;
             width: 100%;
             position: fixed;
-            top:0;
+            top: 0;
             left: 0;
-            width: 100%;
             z-index: 1000;
         }
 
         label.logo {
-            color: #e6e600; /* Bright accent color for logo */
+            color: #e6e600;
             font-size: 25px;
             line-height: 80px;
             padding: 0 100px;
@@ -42,7 +57,7 @@
         }
 
         nav ul li a {
-            color: #e6e600; /* Bright accent color for links */
+            color: #e6e600;
             font-size: 17px;
             padding: 7px 13px;
             border-radius: 3px;
@@ -51,7 +66,7 @@
 
         a.active,
         a:hover {
-            transition: .5s;
+            transition: .8s;
             color: white;
         }
 
@@ -96,7 +111,7 @@
                 top: 80px;
                 left: -100%;
                 text-align: center;
-                transition: all .5s;
+                transition: all 0.5s;
                 z-index: 1000;
             }
 
@@ -119,341 +134,428 @@
             left: 0;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        body {
-            font-family: "Staatliches", sans-serif;
-            background-color: #0d0d0d;
-            color: #fff;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-        }
-
-        * {
-            padding: 0;
-            margin: 0;
-            text-decoration: none;
-            list-style: none;
-            box-sizing: border-box;
-        }
-
-        .search-container {
+        header {
+            text-align: center;
+            margin-top: 80px;
+            padding: 50px 20px;
+            background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)),
+                url('https://d16f573ilcot6q.cloudfront.net/wp-content/uploads/2024/01/Screenshot-2024-01-24-081507.png') no-repeat center center/cover;
+            filter: brightness(0.9);
+            height: 400px;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
-            margin: 20px auto;
-            padding: 0 10px;
-            
-        }
-
-        .search-container input {
-            padding: 10px;
-            font-size: 16px;
-            border: 2px solid #444;
-            border-radius: 5px;
-            width: 100%;
-            max-width: 300px;
-            background-color: #222;
-            color: #fff;
-            margin-top: 100px;
-            font-weight: bold;
-        }
-
-        .search-container button {
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            background-color: #e6e600;
-            color: #000;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 10px;
-            width: 100%;
-            max-width: 120px;
-            
-        }
-
-        .search-container button:hover {
-            background-color: #fff200;
-        }
-
-        .player-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
-            gap: 20px; /* Space between cards */
-            margin: 2rem auto;
-            padding: 0 1rem; /* Padding around grid */
-            
-        }
-
-        .main-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            background-color: #151515;
-            border-radius: 10px;
             position: relative;
-            transition: transform 0.3s, box-shadow 0.3s; /* Added transition for box-shadow */
-            margin: 5px;
+            overflow: hidden;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8);
         }
 
-        .main-container:hover {
-            transform: scale(1.05); /* Slightly enlarge on hover */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 230, 0, 1); /* More intense glow on hover */
+        header h1 {
+            font-size: 50px;
+            color: #ffeb3b;
+            margin-bottom: 10px;
+            animation: fadeIn 2s ease-in-out infinite alternate;
         }
 
-        .rank {
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            background-color: #e6e600;
-            padding: 10px 15px;
-            border-radius: 50%;
+        header p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            animation: slideIn 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-register {
+            background: #ffeb3b;
             color: #000;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            margin-top: 20px;
             font-weight: bold;
-            font-size: 24px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            width: 180px;
         }
 
-        .pf-pic {
-            height: 100px;
-            width: 100px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid #e6e600;
-            box-shadow: 0 0 10px rgba(230, 230, 0, 0.8);
+        .btn-register:hover {
+            background: #ffd600;
+            transform: scale(1.1);
+        }
+
+        .section {
+            padding: 50px 20px;
+            max-width: 800px;
+            margin: 50px auto; /* Centered with auto left and right margins */
+            background: rgba(31, 30, 30, 0.9);
+            border-radius: 10px;
+        }
+
+        .section h2 {
+            text-align: center; /* Center the section title */
+            color: #ffeb3b;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: #ffeb3b;
+            margin: 10px auto;
+        }
+
+        .tournament-list {
+            background: rgba(50, 50, 50, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+
+        .tournament-list:hover {
+            transform: translateY(-5px);
+        }
+
+        .tournament {
+            margin: 10px 0;
+            padding: 15px;
+            background: #414141;
+            border-radius: 5px;
+            transition: background 0.3s;
+            border-left: 5px solid #ffeb3b; /* Accent border */
+        }
+
+        .tournament:hover {
+            background: #505050;
+        }
+
+        .testimonial {
+            background: rgba(50, 50, 50, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .testimonial:hover {
+            transform: scale(1.02);
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: rgba(51, 51, 51, 0.9);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-shadow: 0 2px 4px #000000;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 36px;
+            }
+
+            header p {
+                font-size: 16px;
+            }
+
+            .btn-register {
+                font-size: 16px;
+                box-shadow: 0 0 20px #170101, 0 0 30px #dcdc0b;
+            }
+        }
+
+        #steps {
+            padding-left:30px;
+            
+        }
+
+        #tournaments {
+            background: rgba(50, 50, 50, 0.9);
+            padding: 50px 20px;
+            border-radius: 8px;
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        #tournaments h2 {
+            text-align: center; /* Center the section title */
+            color: #ffeb3b;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        #tournaments h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 5px;
+            background: #ffeb3b;
+            margin: 10px auto;
+        }
+
+        .tournament-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Space between cards */
+        }
+
+        .tournament-card {
+            background: #373030;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+        }
+
+        .tournament-card:hover {
+            transform: scale(1.05);
+        }
+
+        .tournament-card h3 {
+            color: #ffeb3b;
             margin-bottom: 15px;
         }
 
-        .player-info {
-            text-align: center;
-        }
-
-        .player-name, .player-id, .game-name {
-            padding: 10px;
+        .tournament-card p {
+            color: #fff;
             margin: 5px 0;
-            background-color: #222;
-            border: 1px solid #444;
-            border-radius: 8px;
-            color: #e6e600;
-            font-weight: bold;
         }
 
-        .social-container {
-            margin-top: 15px;
+        /* Mute Icon Styles */
+        #mute-button {
+            font-size: 24px; /* Adjust size as needed */
+            color: #ffeb3b; /* Icon color */
+            cursor: pointer;
+            position: absolute; /* Position relative to header */
+            top: 20px; /* Adjust to position from the top */
+            right: 20px; /* Adjust to position from the right */
+            z-index: 10; /* Ensure it stays above other elements */
         }
 
-        .social-link {
-            font-size: 15px;
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
+        #prize-details {
+    background: rgba(50, 50, 50, 0.9);
+    padding: 30px 20px;
+    border-radius: 8px;
+    margin: 40px auto;
+    max-width: 800px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
 
-        .social-link a {
-            color: #008ae6;
-            margin-right: 2px;
-            
-        }
+#prize-details h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        .fa-square-instagram,
-        .fa-youtube,
-        .fa-circle-info {
-            font-size: 24px;
-            color: #ffffff;
-            margin-right: 2px;
-        }
+#prize-details h3 {
+    color: white;
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    
+    padding-bottom: 5px;
+    border-bottom: 2px solid #fcfcf9;
+}
 
-        #message {
-            color: red;
-            text-align: center;
-            display: none;
-        }
+#prize-details p, #prize-details ul {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    font-size: 16px;
+}
 
+#prize-details ul {
+    list-style-type: none;
+    padding-left: 0;
+}
 
-       footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background: #151515;
-            text-align: center;
-            padding: 10px 0;
-            color: #e6e600;
-        }
+#prize-details ul li {
+    margin-bottom: 10px;
+}
 
-        .social-links {
-            margin-top: 10px;
-        }
-
-        .social-links a {
-            margin: 0 10px;
-            color: #e6e600;
-            font-size: 20px;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: white;
-        }
-        .yticon i{
-            color: #e6e600;
-        }
-
-        .yticon i:hover{
-            color: white;
-           
-        }
-        
+#prize-details hr {
+    border: 1px solid #ffffff;
+    margin: 20px 0;
+}
     </style>
 </head>
 
 <body>
-    <header>
+
+    <audio id="background-music" autoplay loop>
+        <source src="music/ff.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <nav>
-        <!-- Checkbox for toggling menu -->
         <input type="checkbox" id="check">
-    
-        <!-- Menu icon -->
         <label for="check" class="checkbtn">
-          <i class="fas fa-bars"></i>
+            <i class="fas fa-bars"></i>
         </label>
-    
-        <!-- Site logo -->
         <label class="logo">PlayerVault</label>
-    
-        <!-- Navigation links -->
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="article.html">Articles</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a class="active" href="https://forms.gle/CF1ujezdSZ4Cp4xGA">Create Player card</a></li>
-          
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="support.html">Support</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a class="active" href="register.html">Register</a></li>
         </ul>
-        
     </nav>
+
+    <header>
+        <h1>Welcome to PlayerVault</h1>
+        <p>Your ultimate destination for Free Fire Tournaments!</p>
+        <button class="btn-register" onclick="window.location.href='register.html'">Register Now</button>
+        <i id="mute-button" class="fas fa-volume-up"></i> <!-- Positioned icon -->
     </header>
 
-    <!-- Search Section -->
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Enter UID or Player Name" aria-label="Search Player">
-        <button onclick="searchPlayer()">Search</button>
-    </div>
+    <main>
+        <section class="section" id="steps">
+            <h2>Steps to Register</h2>
+            <ol>
+                <li>Check the rules.</li>
+                <li>Click on the Register button and fill in the correct information.</li>
+                <li>Pay entry fee and upload valid payment proof.</li>
+                <li>Your tournament schedule will be emailed to your Gmail.</li>
+                <li>You will receive an email with the custom room ID and password.</li>
+                <li>Incase if you  miss the tournament then visit support page and contact on our email you will get chance to play other round or you can ask for refund</li>
+            </ol>
+        
+        </section>
 
-    <div id="message"></div> <!-- Message display -->
+        <section class="section" id="prize-details">
+            
+        
+            <div class="schedule-info">
+                <h3>Tournament Schedule:</h3>
+                <p>The detailed tournament schedule, including match timings and other necessary information, will be sent to your registered email address after successful verification of your details. Please ensure your email details are accurate and check your inbox regularly for updates.</p>
+            </div>
+        
+            <hr>
+        
+            <div class="guidelines-info">
+             
+        
+            <div class="privacy-info">
+                <h3>Privacy Note:</h3>
+                <p>Your personal information will be kept confidential and used solely for the purpose of tournament registration and communication. We do not share your data with third parties.</p>
+            </div>
+        </section>
 
-    <!-- Player Cards -->
-    <div class="player-cards">
-        <!-- Player 1 -->
-        <div class="main-container player-card" data-name="harshpatel" data-uid="1699444468">
-            <div class="rank">1</div>
-            <img class="pf-pic" src="https://i.guim.co.uk/img/media/d74fb48312da07d3419482b1a22f5eb1cb04e4f1/0_103_1532_919/master/1532.jpg?width=465&dpr=1&s=none" alt="Profile Picture of harshpatel">
-            <div class="player-info">
-                <p class="player-name">Player Name: harshpatel</p>
-                <p class="player-id">UID: 1699444468</p>
-                <p class="game-name">Game: Free Fire</p>
-                <div class="social-container">
-                    <p class="social-link">
-                        <i class="fa-brands fa-square-instagram"></i> <a href="#">Instagram</a>
-                        <i class="fa-brands fa-youtube"></i> <a href="#">YouTube</a>
-                        <i class="fa-solid fa-circle-info"></i><a href="#">Details</a>
-                    </p>
+        <section class="section" id="tournaments">
+            <h2>Upcoming Tournaments</h2>
+            <div class="tournament-wrapper">
+                <div class="tournament-card">
+                    <h3>#1 Solo Tournament</h3>
+                    <p><strong>Entry Fee:</strong> 5 Rs</p>
+                    <p><strong>Winner Prize:</strong> 150 Rs</p>
+                    <p><strong>Runner-up Prize:</strong> 50 Rs</p>
+                    <p><em>Winner will be featured on the website!</em></p>
+                </div>
+                <div class="tournament-card">
+                    <h3>#2 Solo Tournament</h3>
+                    <p><strong>Entry Fee:</strong> 10 Rs</p>
+                    <p><strong>Winner Prize:</strong > 250 Rs</p>
+                    <p><strong>Runner-up Prize:</strong> 100 Rs</p>
+                    <p><em>Article will be published about winners ot the plateform</em></p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="main-container player-card" data-name="harshpatel" data-uid="1699444468">
-            <div class="rank">2</div>
-            <img class="pf-pic" src="https://i.guim.co.uk/img/media/d74fb48312da07d3419482b1a22f5eb1cb04e4f1/0_103_1532_919/master/1532.jpg?width=465&dpr=1&s=none" alt="Profile Picture of harshpatel">
-            <div class="player-info">
-                <p class="player-name">Player Name: harshpatel</p>
-                <p class="player-id">UID: 1699444468</p>
-                <p class="game-name">Game: Free Fire</p>
-                <div class="social-container">
-                    <p class="social-link">
-                        <i class="fa-brands fa-square-instagram"></i> <a href="#">Instagram</a>
-                        <i class="fa-brands fa-youtube"></i> <a href="#">YouTube</a>
-                        <i class="fa-solid fa-circle-info"></i><a href="#">Details</a>
-                    </p>
-                </div>
+        
+
+        <section class="section" id="about">
+            <h2>About Us</h2>
+            <p style="text-align: justify;">Welcome to PlayerVault! We're all about hosting thrilling and competitive Free Fire tournaments for players across the globe. Whether you're a solo player, prefer teaming up with a duo, or enjoy battling in squads, we offer daily tournaments suited for every skill level.
+
+                Our mission at PlayerVault is to create a fair and fun space where players can show off their skills and win amazing prizes. Every day, we spotlight the top players and celebrate their victories with articles that highlight their achievements.
+                
+                Join us and become part of a growing community of Free Fire fans. Compete, improve, and grab the chance to earn exciting rewards. PlayerVault is your ultimate destination for epic Free Fire action!</p>
+        </section>
+
+        <section class="section" id="testimonials">
+            <h2>What Players Are Saying</h2>
+            <div class="testimonial">
+                <p>"PlayerVault tournaments are incredibly well organized! I had a blast!"</p>
+                <p>- Ninja, Tournament Player</p>
             </div>
-        </div>
-
-        <!-- Add more player cards as needed -->
-    </div>
-
+            <div class="testimonial">
+                <p>"The competition is fierce and the prizes are great! Highly recommend!"</p>
+                <p>- Legend, Tournament Player</p>
+            </div>
+            <div class="testimonial">
+                <p>"I love the community and the events! Can't wait for the next tournament!"</p>
+                <p>- Gangter, Tournament Player</p>
+            </div>
+        </section>
+    </main>
 
     <footer>
-        <p>Follow us</p>
-        <div class="social-links">
-            <a href="https://www.facebook.com/playervault" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://t.me/playervault" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-            <a href="https://www.instagram.com/playervault.in/profilecard/?igsh=MWlpNjJsemxoZGJzNA==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@playervaultgaming?si=VR0cra0HiN8m7q9l" target="_blank" class="yticon"><i class="fab fa-youtube"></i></a>
-        </div>
+        <p>Contact us: <a href="mailto:infoplayervault@gmail.com">infoplayervault@gmail.com</a></p>
+        <p>&copy; 2024 PlayerVault. All rights reserved.</p>
     </footer>
 
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('show');
-        }
+        const audio = document.getElementById('background-music');
+        const muteButton = document.getElementById('mute-button');
 
-        // Close sidebar on outside click
-        document.addEventListener('click', function(event) {
-            const sidebar = document.getElementById('sidebar');
-            const toggleButton = document.querySelector('.sidebar-toggle');
-
-            // Check if the click was outside the sidebar and the toggle button
-            if (!sidebar.contains(event.target) && !toggleButton.contains(event.target)) {
-                sidebar.classList.remove('show'); // Close the sidebar
+        muteButton.addEventListener('click', () => {
+            if (audio.muted) {
+                audio.muted = false;
+                muteButton.classList.remove('fa-volume-mute');
+                muteButton.classList.add('fa-volume-up');
+            } else {
+                audio.muted = true;
+                muteButton.classList.remove('fa-volume-up');
+                muteButton.classList.add('fa-volume-mute');
             }
         });
-
-        function searchPlayer() {
-            const input = document.getElementById('search-input').value.toLowerCase();
-            const playerCards = document.querySelectorAll('.player-card');
-            const messageDiv = document.getElementById('message');
-
-            // Hide all player cards initially
-            playerCards.forEach(card => {
-                card.style.display = 'none';
-            });
-
-            // Flag to check if any player is found
-            let found = false;
-
-            // Loop through each player card to find a match
-            playerCards.forEach(card => {
-                const playerName = card.getAttribute('data-name').toLowerCase();
-                const playerUID = card.getAttribute('data-uid');
-
-                // Check if input matches player name or UID
-                if (input === playerName || input === playerUID) {
-                    card.style.display = 'flex'; // Show matching player card
-                    found = true; // Set found to true
-                }
-            });
-
-            // Show message if no player is found
-            if (!found) {
-                messageDiv.textContent = "No player found with that UID or name.";
-                messageDiv.style.display = 'block'; // Show the message
-            } else {
-                messageDiv.style.display = 'none'; // Hide the message if found
-            }
-        }
     </script>
-
 </body>
+
 </html>
