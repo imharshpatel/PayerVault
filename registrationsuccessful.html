@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Confirmation - PlayerVault</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f0f4c3, #e1bee7);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            padding-top: 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        h1 {
+            color: #3f51b5; /* Blue color */
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #ff4081; /* Pink color */
+            margin-top: 20px;
+            font-size: 1.8em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .warning, .referral {
+            background-color: #ffeb3b; /* Yellow color */
+            color: #000;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-weight: bold;
+            border: 1px solid #ffc107; /* Darker yellow */
+        }
+
+        .referral {
+            background-color: #e1f5fe; /* Light blue */
+            border: 1px solid #b3e5fc; /* Darker blue */
+            padding: 25px;
+            text-align: left;
+            position: relative;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            margin-top: 20px;
+            background-color: #3f51b5; /* Blue color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .button:hover {
+            background-color: #3949ab; /* Darker blue */
+            transform: scale(1.05);
+        }
+
+        .illustration {
+            margin: 20px 0;
+            max-width: 100%;
+            height: 200px;
+            width: 200px;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        .share-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #4CAF50; /* Green color */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .share-button:hover {
+            background-color: #45a049; /* Darker green */
+            transform: scale(1.05);
+        }
+
+        .referral::after {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 5px;
+            background-color: #3f51b5; /* Blue accent */
+            border-radius: 5px;
+        }
+        .refund-assurance{
+            border: 1px solid green;
+            padding: 7px;
+            border-radius: 7px;
+            background-color:rgb(201, 251, 201) 
+           
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>🎉 Congratulations!</h1>
+        <img src="image/logo.png" class="illustration">
+        <p style="font-weight: bold;">You have successfully registered for the tournament!</p>
+        <p style="font-weight: bold; display: inline-block; border-bottom: 2px solid black; padding-bottom: 30px;">You will receive an email shortly with all the tournament details and schedule.</p>
+
+        <div class="refund-assurance">
+
+        <h2 style= "color: #0d7813; font-size: 25px;">💸Instant Refund Assurance</h2>
+        <p style="margin-bottom: 50px; color: #0a5f0e;">Don't worry! If you miss the tournament, we will issue a refund instantly.</p>
+
+        </div>
+        <div class="referral">
+            <h2 style="">🤝 Refer a Friend!</h2>
+            <p>Refer to friends or share on whatsapp group and use your phone number as referal code . If your friend wins the game, you will receive <strong>10% commission</strong> of their prize money!</p>
+            <p>Tell them to use your phone number as the referral code when registering.</p>
+            <a href="javascript:void(0)" class="share-button" onclick="shareURL()">Click To Refer</a>
+        </div>
+
+        <div class="warning">
+            <p><strong>Important:</strong> We never ask for OTP or sensitive details via email ,phone call or messege. Please do not share sensitive  information with anyone.</p>
+        </div>
+
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feel free to reach out:</p>
+            <p>Email: <a href="mailto:infoplayervault@gmail.com">infoplayervault@gmail.com</a></p>
+            
+        </div>
+
+        <a href="index.html" class="button">Return to Home</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 PlayerVault. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function shareURL() {
+            const url = "https://playervault.in/ Join the tournament at PlayerVault and earn exclusive rewards! Check it out"; 
+            const text = "Join the tournament at PlayerVault and earn exclusive rewards! Check it out: " + url;
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: text,
+                    url: url
+                }).then(() => {
+                    console.log('Share successful');
+                }).catch((error) => {
+                    console.log('Sharing failed', error);
+                });
+            } else {
+                // Fallback for older browsers
+                prompt("Copy this URL and message:", text + "\n" + url);
+            }
+        }
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  
+<script>
+  // Trigger confetti when the page is loaded
+  window.onload = function() {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { x: 0.5, y: 0.5 },
+    });
+  };
+</script>
+
+
+</body>
+</html>
