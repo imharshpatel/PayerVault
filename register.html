@@ -210,11 +210,12 @@
             display: flex;
             justify-content: center;
             gap: 20px;
+            
         }
 
         .social-icon {
             font-size: 25px; /* Size of the icons */
-            color: #ffeb3b; /* Icon color */
+            color: #ffffff; /* Icon color */
             transition: transform 0.3s;
         }
 
@@ -296,10 +297,11 @@
             <h2>Tournament Rules</h2>
             <ol>
                 <li>Player Must be level 50 or higher</li>
-                <li>Participants must fill correct details while registering for form.</li>
-                <li>Detailed Tournament schedule and custom room id , password will be sent on gmail</li>
+                <li>Participants must fill correct details while registering</li>
+               
                 <li>All players must join the match using the provided room ID and password.</li>
-                <li>Cheating or unauthorized software will result in disqualification and a permanent ban from future tournaments.</li>
+                <li>Cheating or unauthorized behaviour will result in disqualification and a permanent ban from future tournaments.</li>
+                <li>Team up will lead to disqualification and ban from future tournament, rest of the players will get chance to play next round for free </li>
                 <li>Players must respect each other and maintain good sportsmanship.</li>
                 <li>Decisions made by the tournament organizers are final.</li>
             </ol>
@@ -308,26 +310,50 @@
         <section class="section" id="notice">
             <h2>Notice</h2>
             <ol>
-                <li>Entry charges of all players will be refunded if any hacker is found in the game, or players will get a chance to play the next round for free.</li>
+                <li>Entry charges of all players will be refunded if any hacker is found in the game</li>
                 <li style="margin-top: 10px;">Visit the Support page for any concerns related to the tournament.</li>
                 
             </ol>
         </section>
 
+
         <div class="tournament-entry">
-            <h3>Solo Tournament #1</h3>
-            <p style="margin-bottom: 10px;"><strong>Entry Fee:</strong> ₹2</p>
+            <h3>Squad Tournament #1</h3>
+            <p style="margin-bottom: 10px;"><strong>Entry Fee:</strong> ₹100</p>
             <div style="background-color: #414141; border-radius: 10px; padding: 10px; margin-bottom: 20px;">
                 <p>💸 Prizes:</p>
-                <p>🏆 Winner: ₹100<br>🏆 Runner-Up: ₹20</p>
+                <p>🏆 Winner: ₹600<br>
+                    🏆 Runner-Up: ₹300<br>
+                    🏆3rd Place: ₹200</p>
             </div>
             <div style="background-color: #414141; border-radius: 10px; padding: 10px; margin-bottom: 20px;"> 
-                <p> Additinal</p>
-                <p>Free youtube channel promotion
+                <p style="color: #e6e600;"> Notice</p>
+                <p>Custom room id & password with tournament schedule will be sent on registered whatsapp number
                 </p>
+                
             
             </div>
             <button onclick="redirectToRegistration1()"><b>Register Now</b></button>
+        </div>
+
+        <div class="tournament-entry">
+            <h3>Squad Tournament #2</h3>
+            <p style="margin-bottom: 10px;"><strong>Entry Fee:</strong> ₹200</p>
+            <div style="background-color: #414141; border-radius: 10px; padding: 10px; margin-bottom: 20px;">
+                <p>💸 Prizes:</p>
+                <p>🏆 Winner: ₹900<br>
+                    🏆 Runner-Up: ₹600<br>
+                    🏆 3rd Place: ₹400<br>
+                    🏆 4th Place: ₹300</p>
+            </div>
+            <div style="background-color: #414141; border-radius: 10px; padding: 10px; margin-bottom: 20px;"> 
+                <p style="color: #e6e600;"> Notice</p>
+                <p>Custom room id & password with tournament schedule will be sent on registered whatsapp number
+                </p>
+                
+            
+            </div>
+            <button onclick="redirectToRegistration2()"><b>Register Now</b></button>
         </div>
 
 
@@ -351,19 +377,11 @@
             <button onclick="redirectToRegistration2()"><b>Register Now</b></button>
         </div>     -->
 
-        <div class="squad-title">
-            <h1>Squad Tournament</h1>
+        <div class="squad-title" style="margin-bottom: 100px;">
+            <h1>PLAYERVAULT</h1>
         </div>
 
-        <div class="tournament-entry-squad">
-            <h3>Squad Tournament</h3>
-            <p style="margin-bottom: 10px;"><strong>Entry Fee:</strong> ₹19</p>
-            <div style="background-color: #414141; border-radius: 10px; padding: 10px; margin-bottom: 20px;">
-                <p>💸 Prizes:</p>
-                <p>🏆 Winner: ₹300 <br>🏆 Runner-Up: ₹100 </p>
-            </div>
-            <button class="button-s"><b>Coming Soon</b></button>
-        </div>
+      
 
         <section class="section" id="follow">
             <h4>Follow Us For Upcoming Tournament & Giveaway Updates</h4>
@@ -391,11 +409,11 @@
             window.location.href = registrationLink;
         }
 
-    // function redirectToRegistration2() {
-            // Replace this URL with the actual registration form link
-    //        const registrationLink = "https://rzp.io/rzp/playervault10";
-     //       window.location.href = registrationLink;
-    
+    function redirectToRegistration2() {
+            //Replace this URL with the actual registration form link
+           const registrationLink = "https://rzp.io/rzp/playervault10";
+           window.location.href = registrationLink;
+    }
 
     </script>
     
